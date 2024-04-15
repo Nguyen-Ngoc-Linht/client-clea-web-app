@@ -1,0 +1,49 @@
+.manage-user-page {
+  width: 100%;
+
+  .body-page {
+    width: 96%;
+    margin: 0 auto;
+
+    .title-page {
+      .list-option {
+        display: flex;
+        gap: 12px;
+
+        .btn-add {
+          background: #9df99d !important;
+          color: #003c00 !important;
+        }
+
+        .nhap-tu-file {
+          background: #e1ec86 !important;
+          color: #4b5400 !important;
+        }
+
+        .print-file {
+          background: #bfbeef !important;
+          color: #03009a !important;
+        }
+
+        .btn-excel {
+          color: #008c04 !important;
+          background: #a2ecb5 !important;
+        }
+
+        .pdf-file {
+          background: #efcaca !important;
+          color: #bf0000 !important;
+        }
+      }
+    }
+    .name-table {
+      .table-user {
+        .table-bordered {
+          thead {
+            background: #eee;
+          }
+        }
+      }
+    }
+  }
+}

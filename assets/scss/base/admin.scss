@@ -1,0 +1,107 @@
+.admin-page {
+  width: 100%;
+  display: flex;
+  // background-image: url("../../images/base/Light.svg");
+  background-size: 100%;
+
+  .sidebar-admin {
+    width: 260px;
+    height: 100vh;
+    background-color: rgba(255, 237, 224, 0.56);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+
+    .header-admin {
+      margin: 40px 20px 20px;
+      width: 80%;
+
+      .avatar-admin {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .img-admin {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .line {
+      width: 100%;
+      border-bottom: 1px solid #432c2c;
+    }
+
+    .list-manage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+
+      .manage-item {
+        height: 52px;
+        border-radius: 12px;
+        padding: 0 8px;
+        background-color: #f5efeb;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        //justify-content: center;
+        text-decoration: none;
+        color: black;
+
+        .item-icon {
+          width: 28px;
+          height: 28px;
+
+          .icon-img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .item-name {
+          margin-left: 4px;
+          font-size: 14px;
+          font-weight: 300;
+        }
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .button-navigation {
+      height: 52px;
+      width: 100%;
+      display: flex;
+      margin-bottom: 40px;
+      align-items: center;
+      justify-content: center;
+
+      .text-navi {
+        width: 100%;
+        height: 52px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        line-height: 52px;
+      }
+
+      &:hover {
+        background-color: rgb(199, 199, 199);
+      }
+    }
+  }
+
+  .content-admin {
+    flex: 1;
+  }
+}

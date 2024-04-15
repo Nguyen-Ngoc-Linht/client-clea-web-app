@@ -1,0 +1,36 @@
+@import "./../config/valiables.scss";
+
+.default-page {
+  //overflow: hidden;
+  overflow-y: auto;
+  max-height: 100vh;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #7df1f1;
+    border-radius: 8px;
+  }
+
+  .header_app {
+    position: fixed;
+    width: 100wh;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    height: $height-header;
+    z-index: 100;
+  }
+
+  .body-content {
+    margin-top: $height-header;
+    width: 100%;
+  }
+
+  .footers {
+    width: 100%;
+  }
+}

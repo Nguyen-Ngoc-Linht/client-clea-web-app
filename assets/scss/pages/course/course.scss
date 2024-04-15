@@ -1,0 +1,111 @@
+.course-page {
+  width: 100%;
+
+  .course-outstanding {
+    background-color: rgba(157, 204, 255, 0.4);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .outstanding-text {
+      width: 72%;
+      font-size: 20px;
+      color: #252641;
+      font-weight: 600;
+    }
+
+    .list-course-outstanding {
+      width: 80%;
+
+      .course-outstanding-item {
+        height: 260px;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 19px 47.08px rgba(47, 50, 125, 0.1);
+        cursor: pointer;
+        transition: transform 0.2s ease; /* Thêm hiệu ứng chuyển động */
+
+        &:hover {
+          transform: translateY(-6px); /* Di chuyển lên 1px khi hover */
+        }
+
+        .item-img {
+          height: 82%;
+          width: 94%;
+          margin: 0 auto;
+
+          .img-item {
+            width: 100%;
+            height: 100%;
+            //object-fit: cover;
+          }
+        }
+
+        .item-name {
+          font-size: 18px;
+          font-weight: 600;
+          width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .list-course {
+    width: 100%;
+
+    .list-course-text {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .list-item-course {
+      width: 86%;
+      margin: 0 auto;
+    }
+  }
+
+  .category-course {
+    width: 100%;
+    //background-color: rgba(157, 204, 255, 0.4);
+
+    .list-caterory-text {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .list-category {
+      width: 84%;
+      margin: 0 auto;
+
+      .category-item {
+        box-shadow: 0 19px 47.08px rgba(47, 50, 125, 0.1);
+        border-radius: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+
+        .item-name {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        .item-description {
+          font-size: 14px;
+          margin: 0 12px;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

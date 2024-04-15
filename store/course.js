@@ -1,0 +1,56 @@
+import { CONSTANTS } from "../utils/constant";
+import { COURSEAPI } from "@/api/course";
+
+const SET_LIST_COURSE = "SET_LIST_COURSE";
+
+const actions = {
+  async getlistcourse({ commit, state }) {
+    try {
+      let { data } = await this.$axios.get(`${COURSEAPI.GETCOURSE}`);
+      if (data.status === CONSTANTS.SUCCESS) {
+        const listCourse = data.data;
+        const response = [];
+        for (let item of listCourse) {
+          response.push({
+            id: item._id,
+            title: item.title,
+            name: item.name,
+            price: item.price,
+            description: item.description,
+            nbmembers: item.nbmembers,
+            category: item.category,
+            pathImage: `${process.env.baseUrl}${item.urlImage}`,
+          });
+        }
+
+        commit(SET_LIST_COURSE, response);
+        return response;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+};
+
+const state = () => ({
+  courses: [],
+});
+
+const getters = {
+  courses: (state) => {
+    return state.courses;
+  },
+};
+
+const mutations = {
+  [SET_LIST_COURSE]: (state, courses) => {
+    state.courses = courses;
+  },
+};
+
+export default {
+  actions,
+  state,
+  getters,
+  mutations,
+};

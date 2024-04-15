@@ -1,0 +1,59 @@
+.footer {
+  width: 100%;
+  height: 260px;
+  background-color: #252641;
+
+  .box-footer {
+    width: 40%;
+    margin: 0 auto;
+    height: 100%;
+
+    .name-logo {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+
+      .logo {
+        width: 30%;
+        width: 110px;
+        height: 80px;
+
+        .logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .name {
+        width: 30%;
+        font-size: 18px;
+        color: white;
+        font-weight: 600;
+      }
+    }
+
+    .introduce {
+      color: white;
+      width: 100%;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+
+      .introduce-name {
+        padding-right: 30px;
+        border-right: 1px solid white;
+        color: #b2b3cf;
+      }
+    }
+
+    .text-time {
+      color: #b2b3cf;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}

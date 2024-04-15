@@ -1,0 +1,119 @@
+.header_page {
+  display: flex;
+  width: 100%;
+  padding: 0 32px;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+
+  .logo-page {
+    height: 42px;
+    width: 56px;
+
+    .logon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .options {
+    display: flex;
+
+    .options-tab {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-right: 16px;
+
+      .tab-item {
+        text-decoration: none;
+        color: #49bbbd;
+        font-weight: 600;
+        flex: 1;
+        min-width: 120px;
+        height: 42px;
+        border-radius: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: #49bbbd;
+          opacity: 0.7;
+          color: white;
+        }
+
+        &.activetab {
+          background-color: #49bbbd;
+          color: white;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .box-login {
+      display: flex;
+      gap: 8px;
+      .btn-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        border-radius: 80px;
+        padding: 0 16px;
+        background-color: rgba(73, 187, 189, 0.6);
+        height: 40px;
+      }
+
+      .btn-signup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 80px;
+        padding: 0 16px;
+        background-color: #23bdee;
+        height: 40px;
+      }
+    }
+
+    .avatar-user {
+      height: 50px;
+      display: flex;
+      align-items: center;
+
+      .avatar-img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .img-avt {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .box-name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .text-name {
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        .name-settings {
+          border-radius: 50%;
+
+          .select-down {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}
