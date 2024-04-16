@@ -30,6 +30,28 @@ const actions = {
       console.log(err);
     }
   },
+
+  async createcourse({ commit, state }, formData) {
+    try {
+      const token = localStorage.getItem("token");
+
+      let { data } = await this.$axios.post(
+        "http://localhost:3030/posts",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (data.status === CONSTANTS.SUCCESS) {
+        return data.data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 const state = () => ({

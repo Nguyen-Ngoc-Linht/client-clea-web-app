@@ -53,6 +53,17 @@ const actions = {
       console.log(e);
     }
   },
+
+  async getUser({ commit, state }, userId) {
+    try {
+      let { data } = await this.$axios.get(`${USERSAPI.GETUSER}/${userId}`);
+      if (data.status === CONSTANTS.SUCCESS) {
+        return data.data;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };
 
 const state = () => ({

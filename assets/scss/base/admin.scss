@@ -6,6 +6,7 @@
 
   .sidebar-admin {
     width: 260px;
+    min-width: 260px;
     height: 100vh;
     background-color: rgba(255, 237, 224, 0.56);
     border-radius: 28px;
@@ -14,7 +15,9 @@
 
     .header-admin {
       margin: 40px 20px 20px;
-      width: 80%;
+      width: 82%;
+      display: flex;
+      align-items: center;
 
       .avatar-admin {
         height: 50px;
@@ -27,6 +30,10 @@
           width: 100%;
           object-fit: cover;
         }
+      }
+
+      .admin-name {
+        font-weight: 600;
       }
     }
 
@@ -74,6 +81,10 @@
 
         &:hover {
           opacity: 0.6;
+        }
+
+        &.active {
+          background-color: #e58025;
         }
       }
     }

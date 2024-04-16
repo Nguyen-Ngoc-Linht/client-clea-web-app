@@ -110,7 +110,7 @@ export default {
       ischeckSignin: true,
       username: "",
       avatar: "",
-      isadmin: true,
+      isadmin: false,
     };
   },
   methods: {
@@ -129,6 +129,9 @@ export default {
       this.ischeckSignin = false;
       this.username = user.name;
       this.avatar = user.avatar;
+      if (user.role === "ADMIN") {
+        this.isadmin = true;
+      }
     }
   },
 };

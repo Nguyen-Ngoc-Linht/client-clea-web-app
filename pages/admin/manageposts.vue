@@ -1,27 +1,21 @@
 <template>
   <div class="manage-user-page">
     <div class="header-page">
-      <div class="app-title">
-        <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item active">
-            <div><b>Danh sách tài khoản</b></div>
-          </li>
-        </ul>
-        <div id="clock"></div>
-      </div>
+      <div><b>Danh sách bài viết</b></div>
+      <div id="clock"></div>
     </div>
 
     <!-- body -->
-    <div class="body-page">
-      <div class="title-page">
+    <div class="body-page mt-4">
+      <!-- <div class="title-page">
         <div class="list-option">
           <div class="">
-            <a
+            <NuxtLink
               class="btn btn-add btn-sm"
-              href="form-add-nhan-vien.html"
+              to="/admin/blogs-item"
               title="Thêm"
             >
-              Tạo tài khoản mới</a
+              Tạo khóa học mới</NuxtLink
             >
           </div>
 
@@ -57,7 +51,7 @@
             >
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="name-table mt-3">
         <div class="table-user">
@@ -68,38 +62,26 @@
           >
             <thead>
               <tr>
-                <th width="10"><input type="checkbox" id="all" /></th>
-                <th>ID tài khoản</th>
-                <th width="150">Tên tài khoản</th>
-                <th width="20">Avatar</th>
-                <th width="300">Tên</th>
-                <!-- <th>Địa chỉ</th> -->
-                <th>Tuổi</th>
-                <th>Email</th>
-                <th>Chức vụ</th>
+                <th width="200">Tiêu đề bài viết</th>
+                <th width="20">Người tạo</th>
+                <th width="300">Nội dung</th>
+                <th>Status</th>
+                <th>Ngày tạo</th>
+                <th>Ảnh</th>
+                <th width="100">Lượng tương tác</th>
                 <th width="100">Chỉnh sửa</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="item in listUser">
-                <td width="10">
-                  <input type="checkbox" name="check1" value="1" />
-                </td>
-                <td>{{ item._id }}</td>
-                <td>{{ item.userName }}</td>
-                <td>
-                  <img
-                    class="img-card-person"
-                    style="width: 30px; height: 30px"
-                    :src="item.avatarUrl"
-                    alt=""
-                  />
-                </td>
                 <td>{{ item.name }}</td>
+                <td>{{ item.userName }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.category }}</td>
                 <!-- <td>{{ item.address }}</td> -->
                 <td>{{ item.age }}</td>
-                <td>{{ item.email }}</td>
-                <td>{{ item.role }}</td>
+                <td>{{ item.price }} VND</td>
+                <td>{{ item.nbmembers }}</td>
                 <td class="table-td-center">
                   <button
                     class="btn btn-primary btn-sm trash"
@@ -177,12 +159,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions("user", {
-      getlistUser: "getlistUser",
-      getUser: "getUser",
+    ...mapActions("course", {
+      getlistcourse: "getlistcourse",
     }),
     async showInfoUser(userId) {
-      await this.getUser(userId).then((response) => {
+      await this.getlistcourse().then((response) => {
         if (response != null) {
           this.accountuser = response;
           this.myModal.show();
@@ -191,12 +172,12 @@ export default {
     },
   },
   mounted() {
-    this.getlistUser().then((res) => {
+    this.getlistcourse().then((res) => {
       //console.log(res);
       this.listUser = res;
     });
     // Lấy ra thể hiện của modal từ DOM element có tham chiếu 'modal'
-    this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal);
+    //this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal);
   },
 };
 </script>
@@ -204,5 +185,5 @@ export default {
 <style
   lang="scss"
   scoped
-  src="@/assets/scss/pages/admin/manageuser.scss"
+  src="@/assets/scss/pages/admin/managecourse.scss"
 ></style>
