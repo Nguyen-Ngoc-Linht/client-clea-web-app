@@ -1,7 +1,9 @@
 <template>
   <div class="course-item">
     <div class="course-img">
-      <img :src="image" alt="" class="img-item" />
+      <div class="box-img">
+        <img :src="image" alt="" class="img-item" />
+      </div>
       <div class="modal-box">
         <div class="box">
           <div class="box-text">
@@ -51,5 +53,5 @@ export default {
 <style
   lang="scss"
   scoped
-  src="@/assets/scss/components/common/feature/course/courseItem.scss"
+  src="@/assets/scss/components/feature/course/courseItem.scss"
 ></style>

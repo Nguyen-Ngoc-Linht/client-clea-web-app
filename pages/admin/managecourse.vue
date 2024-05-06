@@ -12,7 +12,7 @@
           <div class="">
             <NuxtLink
               class="btn btn-add btn-sm"
-              to="/admin/blogs-item"
+              to="/admin/course-item"
               title="Thêm"
             >
               Tạo khóa học mới</NuxtLink
@@ -73,7 +73,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in listUser">
+              <tr v-for="item in listCourse">
                 <td>{{ item.name }}</td>
                 <td>{{ item.userName }}</td>
                 <td>{{ item.title }}</td>
@@ -87,7 +87,7 @@
                     class="btn btn-primary btn-sm trash"
                     type="button"
                     title="Sửa"
-                    @click="showInfoUser(item._id)"
+                    @click="showInfo(item.id)"
                   >
                     <img
                       src="~/assets/images/pages/admin/usermanagaer/user.png"
@@ -154,7 +154,7 @@ export default {
   layout: "admin",
   data() {
     return {
-      listUser: [],
+      listCourse: [],
       accountuser: {},
     };
   },
@@ -162,19 +162,14 @@ export default {
     ...mapActions("course", {
       getlistcourse: "getlistcourse",
     }),
-    async showInfoUser(userId) {
-      await this.getlistcourse().then((response) => {
-        if (response != null) {
-          this.accountuser = response;
-          this.myModal.show();
-        }
-      });
+    showInfo(courseId) {
+      this.$router.push(`/admin/course-item/${courseId}`);
     },
   },
   mounted() {
     this.getlistcourse().then((res) => {
-      //console.log(res);
-      this.listUser = res;
+      console.log(res);
+      this.listCourse = res;
     });
     // Lấy ra thể hiện của modal từ DOM element có tham chiếu 'modal'
     this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal);

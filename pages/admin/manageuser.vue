@@ -1,30 +1,14 @@
 <template>
   <div class="manage-user-page">
     <div class="header-page">
-      <div class="app-title">
-        <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item active">
-            <div><b>Danh sách tài khoản</b></div>
-          </li>
-        </ul>
-        <div id="clock"></div>
-      </div>
+      <div><b>Danh sách khóa học</b></div>
+      <div id="clock"></div>
     </div>
 
     <!-- body -->
-    <div class="body-page">
+    <div class="body-page mt-3">
       <div class="title-page">
         <div class="list-option">
-          <div class="">
-            <a
-              class="btn btn-add btn-sm"
-              href="form-add-nhan-vien.html"
-              title="Thêm"
-            >
-              Tạo tài khoản mới</a
-            >
-          </div>
-
           <div class="">
             <a class="btn btn-sm nhap-tu-file" type="button" title="Nhập"
               >Tải từ file</a
@@ -120,49 +104,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!-- Modal -->
-    <div
-      ref="modal"
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              {{ accountuser.name }}
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -170,6 +111,7 @@
 import { mapActions } from "vuex";
 export default {
   layout: "admin",
+  middleware: "checkAdmin",
   data() {
     return {
       listUser: [],
@@ -184,8 +126,9 @@ export default {
     async showInfoUser(userId) {
       await this.getUser(userId).then((response) => {
         if (response != null) {
-          this.accountuser = response;
-          this.myModal.show();
+          //this.accountuser = response;
+          //this.myModal.show();
+          this.$router.push(`/admin/user-item/${response._id}`);
         }
       });
     },
@@ -195,8 +138,6 @@ export default {
       //console.log(res);
       this.listUser = res;
     });
-    // Lấy ra thể hiện của modal từ DOM element có tham chiếu 'modal'
-    this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal);
   },
 };
 </script>

@@ -34,7 +34,11 @@
 
       <!-- List coure -->
       <div class="row list-item-course mt-2 mb-4">
-        <div v-for="item in courseList" class="col-6 col-md-4 col-lg-3 mt-2">
+        <div
+          v-for="item in courseList"
+          class="col-6 col-md-4 col-lg-3 mt-2"
+          @click="nativeCourse(item.id)"
+        >
           <CourseItem
             :key="item.id"
             :id="item.id"
@@ -232,6 +236,9 @@ export default {
     ...mapActions("course", {
       getlistcourse: "getlistcourse",
     }),
+    nativeCourse(courseid) {
+      this.$router.push(`/course/coursedetail/${courseid}`);
+    },
   },
   created() {
     this.getlistcourse()

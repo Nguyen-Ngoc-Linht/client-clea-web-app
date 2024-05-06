@@ -52,6 +52,42 @@ const actions = {
       console.log(err);
     }
   },
+
+  async getcourse({ commit, state }, course_id) {
+    try {
+      let { data } = await this.$axios.get(
+        `${COURSEAPI.GETCOURSE}/${course_id}`
+      );
+      if (data.status === CONSTANTS.SUCCESS) {
+        const course = data.data;
+        return course;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  async updatecourse({ commit, state }, { formData, course_id }) {
+    try {
+      const token = localStorage.getItem("token");
+
+      let { data } = await this.$axios.post(
+        `${COURSEAPI.GETCOURSE}/course-item/${course_id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (data.status === CONSTANTS.SUCCESS) {
+        return data.data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 const state = () => ({

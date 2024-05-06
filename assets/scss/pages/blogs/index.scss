@@ -186,4 +186,26 @@
       }
     }
   }
+
+  .form-input {
+    .input-item {
+      display: flex;
+      flex-direction: column;
+
+      .input-title {
+        margin-top: 4px;
+        height: 42px;
+        border-radius: 12px;
+        border: 0.7px solid rgba(0, 0, 0, 0.2);
+        outline: none;
+        padding: 0 16px;
+      }
+    }
+  }
+  .text-area-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    min-height: 140px;
+  }
 }

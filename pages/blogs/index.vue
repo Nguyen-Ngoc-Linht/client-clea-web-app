@@ -32,11 +32,7 @@
     <div class="input-blogs mt-4">
       <div class="box-input">
         <div class="avatar-user">
-          <img
-            src="https://files.fullstack.edu.vn/f8-prod/blog_posts/8334/64f01064b0724.png"
-            alt=""
-            class="img-avt"
-          />
+          <img :src="user.avatar" alt="" class="img-avt" />
         </div>
 
         <div class="input-data">
@@ -44,6 +40,7 @@
             type="text"
             class="input-text"
             placeholder="Hãy chia sẻ kinh nghiệm hoặc vấn đề bạn đang gặp phải?"
+            @click="showboxInput"
           />
         </div>
       </div>
@@ -53,29 +50,23 @@
     <div class="listblogs">
       <span class="listblogsheader">Cùng xem danh sách bài viết.</span>
       <div class="list-blog">
-        <div class="box-post mt-3">
+        <div v-for="item in listposts" class="box-post mt-3">
           <!-- Header -->
           <div class="header-post">
             <!-- Avatar -->
             <div class="avatar-user">
-              <img
-                src="https://www.shorturl.at/img/shorturl-icon.png"
-                alt=""
-                class="avt-img"
-              />
+              <img :src="item.avataruser" alt="" class="avt-img" />
             </div>
-            <div class="user-name ms-2">Nguyễn Ngọc Linh</div>
+            <div class="user-name ms-2">{{ item.username }}</div>
           </div>
           <div class="post-body row mt-2">
             <!-- Title -->
             <div class="post-content col-8">
               <div class="post-title">
-                LÀ THÀNH VIÊN CỦA F8. BẠN ĐÃ THỰC SỰ SỬ DỤNG "F8" HIỆU QUẢ CHƯA?
+                {{ item.title }}
               </div>
               <div class="post-text mt-2">
-                `F8` sẽ đưa bạn đến chính xác từng vị trí xảy ra vấn đề. F8 là
-                phím tắt mặc định trong VScode các bạn nhé (không phải cài thêm
-                bất cứ Extensions nào)
+                {{ item.body }}
               </div>
               <div class="post-time"></div>
             </div>
@@ -83,172 +74,7 @@
             <!-- Image -->
             <div class="post-image col-4">
               <div class="image-item">
-                <img
-                  src="https://www.shorturl.at/img/shorturl-icon.png"
-                  alt=""
-                  class="img-post"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="box-post mt-3">
-          <!-- Header -->
-          <div class="header-post">
-            <!-- Avatar -->
-            <div class="avatar-user">
-              <img
-                src="https://www.shorturl.at/img/shorturl-icon.png"
-                alt=""
-                class="avt-img"
-              />
-            </div>
-            <div class="user-name ms-2">Nguyễn Ngọc Linh</div>
-          </div>
-          <div class="post-body row mt-2">
-            <!-- Title -->
-            <div class="post-content col-8">
-              <div class="post-title">
-                Tôi đã viết Chrome extension đầu tiên của mình bằng Github
-                Copilot như thế nào?
-              </div>
-              <div class="post-text mt-2">
-                Câu chuyện của tôi là Tôi đang học tiếng Nhật trên một trang web
-                là Dungmori.com, và tôi học từ mới trên trang web Quizlet. Và
-                tôi...
-              </div>
-              <div class="post-time"></div>
-            </div>
-
-            <!-- Image -->
-            <div class="post-image col-4">
-              <div class="image-item">
-                <img
-                  src="https://files.fullstack.edu.vn/f8-prod/blog_posts/9976/65fa652ce3a64.jpg"
-                  alt=""
-                  class="img-post"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="box-post mt-3">
-          <!-- Header -->
-          <div class="header-post">
-            <!-- Avatar -->
-            <div class="avatar-user">
-              <img
-                src="https://www.shorturl.at/img/shorturl-icon.png"
-                alt=""
-                class="avt-img"
-              />
-            </div>
-            <div class="user-name ms-2">Nguyễn Ngọc Linh</div>
-          </div>
-          <div class="post-body row mt-2">
-            <!-- Title -->
-            <div class="post-content col-8">
-              <div class="post-title">
-                Authentication & Authorization trong ReactJS
-              </div>
-              <div class="post-text mt-2">
-                Authentication và Authorization là một phần quan trọng trong
-                việc phát triển phần mềm, giúp chúng ta xác thực và phân
-                quyền...
-              </div>
-              <div class="post-time"></div>
-            </div>
-
-            <!-- Image -->
-            <div class="post-image col-4">
-              <div class="image-item">
-                <img
-                  src="https://files.fullstack.edu.vn/f8-prod/blog_posts/8306/65299d0ce743e.png"
-                  alt=""
-                  class="img-post"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="box-post mt-3">
-          <!-- Header -->
-          <div class="header-post">
-            <!-- Avatar -->
-            <div class="avatar-user">
-              <img
-                src="https://www.shorturl.at/img/shorturl-icon.png"
-                alt=""
-                class="avt-img"
-              />
-            </div>
-            <div class="user-name ms-2">Nguyễn Ngọc Linh</div>
-          </div>
-          <div class="post-body row mt-2">
-            <!-- Title -->
-            <div class="post-content col-8">
-              <div class="post-title">
-                LÀ THÀNH VIÊN CỦA F8. BẠN ĐÃ THỰC SỰ SỬ DỤNG "F8" HIỆU QUẢ CHƯA?
-              </div>
-              <div class="post-text mt-2">
-                `F8` sẽ đưa bạn đến chính xác từng vị trí xảy ra vấn đề. F8 là
-                phím tắt mặc định trong VScode các bạn nhé (không phải cài thêm
-                bất cứ Extensions nào)
-              </div>
-              <div class="post-time"></div>
-            </div>
-
-            <!-- Image -->
-            <div class="post-image col-4">
-              <div class="image-item">
-                <img
-                  src="https://files.fullstack.edu.vn/f8-prod/blog_posts/8334/64f01064b0724.png"
-                  alt=""
-                  class="img-post"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="box-post mt-3">
-          <!-- Header -->
-          <div class="header-post">
-            <!-- Avatar -->
-            <div class="avatar-user">
-              <img
-                src="https://www.shorturl.at/img/shorturl-icon.png"
-                alt=""
-                class="avt-img"
-              />
-            </div>
-            <div class="user-name ms-2">Nguyễn Ngọc Linh</div>
-          </div>
-          <div class="post-body row mt-2">
-            <!-- Title -->
-            <div class="post-content col-8">
-              <div class="post-title">
-                LÀ THÀNH VIÊN CỦA F8. BẠN ĐÃ THỰC SỰ SỬ DỤNG "F8" HIỆU QUẢ CHƯA?
-              </div>
-              <div class="post-text mt-2">
-                `F8` sẽ đưa bạn đến chính xác từng vị trí xảy ra vấn đề. F8 là
-                phím tắt mặc định trong VScode các bạn nhé (không phải cài thêm
-                bất cứ Extensions nào)
-              </div>
-              <div class="post-time"></div>
-            </div>
-
-            <!-- Image -->
-            <div class="post-image col-4">
-              <div class="image-item">
-                <img
-                  src="https://www.shorturl.at/img/shorturl-icon.png"
-                  alt=""
-                  class="img-post"
-                />
+                <img :src="item.imageLink" alt="" class="img-post" />
               </div>
             </div>
           </div>
@@ -274,16 +100,149 @@
         </nav>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div
+      ref="modal1"
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Chia sẻ suy nghĩ và câu chuyện của bạn!!</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="form-input" @submit.prevent="onSubmit">
+              <div class="input-item">
+                <label for="">Nhập tiêu đề cho bài viết của bạn</label>
+                <input v-model="titlepost" type="text" class="input-title" />
+              </div>
+
+              <div class="input-item mt-3">
+                <label for="">Nội dung của bạn</label>
+                <textarea
+                  v-model="contentpost"
+                  class="text-area-input mt-2"
+                ></textarea>
+              </div>
+
+              <div class="input-item mt-3">
+                <label for="">Đính kèm ảnh cho bài viết</label>
+                <input
+                  ref="imgpost"
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                  class="file-posts mt-3"
+                />
+              </div>
+
+              <!-- Gắn ảnh -->
+
+              <div class="box-button mt-4">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Đóng
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                  Tạo bài viết
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   layout: "default",
   data() {
     return {
+      titlepost: "",
+      contentpost: "",
+      user: {},
       listposts: [],
     };
+  },
+  methods: {
+    ...mapActions("post", {
+      createpost: "createpost",
+      getpost: "getpost",
+    }),
+    showboxInput() {
+      this.titlepost = "";
+      this.contentpost = "";
+      this.$refs.imgpost.files = null;
+      this.myModal.show();
+    },
+    async onSubmit(event) {
+      event.preventDefault();
+
+      console.log(this.titlepost, this.contentpost);
+
+      const formData = new FormData();
+
+      if (this.contentpost != "" && this.titlepost != "") {
+        formData.append("title", this.titlepost);
+        formData.append("body", this.contentpost);
+        formData.append("user_id", this.user.id);
+        formData.append("status", "HAHA");
+
+        if (this.$refs.imgpost.files.length > 0) {
+          const file = this.$refs.imgpost.files[0];
+          console.log(file);
+          formData.append("images", file);
+        }
+      } else {
+        alert("Bạn chưa nhập đủ thông tin");
+        return;
+      }
+
+      await this.createpost(formData).then((response) => {
+        if (response) {
+          this.myModal.hide();
+        }
+      });
+    },
+  },
+  created() {
+    this.getpost().then((response) => {
+      this.listposts = response;
+    });
+  },
+  mounted() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    // Lấy ra thể hiện của modal từ DOM element có tham chiếu 'modal'
+    this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal1);
   },
 };
 </script>

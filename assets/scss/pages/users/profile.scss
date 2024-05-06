@@ -1,6 +1,5 @@
 .profile-page {
   width: 100%;
-  height: calc(100vh - 56px);
   background-color: #f3f2f2;
 
   .box-profile {
@@ -8,21 +7,32 @@
     height: 100%;
     margin: 0 auto;
     background-color: white;
+    padding-bottom: 40px;
 
     .header-profile {
       padding: 30px 40px 20px;
+      position: relative;
       display: flex;
       border-bottom: 1px solid #f3f2f2;
 
       .avatar {
         width: 148px;
         height: 148px;
-        overflow: hidden;
         border-radius: 50%;
+        position: relative;
 
         .avt-img {
           width: 100%;
           height: 100%;
+          border-radius: 50%;
+        }
+
+        .box-edit-avatar {
+          position: absolute;
+          bottom: 6px;
+          right: 8px;
+          z-index: 6;
+          cursor: pointer;
         }
       }
 
@@ -33,6 +43,46 @@
 
         .name {
           font-size: 30px;
+          font-weight: 600;
+        }
+      }
+
+      .icon-edit {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: #92a2bf;
+        }
+
+        .img-icon {
+          width: 80%;
+          height: 80%;
+          object-fit: cover;
+        }
+      }
+
+      .btn-box {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 42px;
+        min-width: 110px;
+
+        .btn-save {
+          width: 100%;
+          height: 100%;
+          font-size: 18px;
           font-weight: 600;
         }
       }
@@ -65,8 +115,29 @@
           .item-detail {
             font-size: 14px;
             margin-top: 4px;
+            height: 60px;
+            border-radius: 10px;
+            padding: 2px 8px;
+            outline: 0.6px solid #b6c0d4;
           }
         }
+      }
+    }
+  }
+
+  .form-input {
+    .avatar {
+      height: 200px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .img-avt {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
       }
     }
   }

@@ -1,0 +1,131 @@
+.page-lesson-detail {
+  width: 100%;
+  height: 100vh;
+
+  .header-page {
+    height: 80px;
+    width: 86%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .text-khoa {
+      font-size: 20px;
+      font-style: italic;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    .text-course {
+      font-size: 20px;
+      font-weight: 600;
+      color: rgb(91, 193, 240);
+    }
+  }
+
+  .container {
+    border-radius: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+
+    .main-content {
+      width: 100%;
+
+      .video-content {
+        width: 100%;
+
+        .box-video {
+          width: 100%;
+          padding-top: 56.25%;
+          display: block;
+          overflow: hidden;
+          position: relative;
+          border-radius: 16px;
+
+          .video-control {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            .videoiframe {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .description-lesson {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0 20px;
+
+          .name {
+            .text {
+              font-size: 20px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .tab-content {
+      width: 100%;
+      height: calc(100vh - 110px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .list-tab {
+        width: 98%;
+        height: 52px;
+        border-radius: 12px;
+        box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+
+        .tab-item {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          cursor: pointer;
+          height: 100%;
+
+          &:hover {
+          }
+
+          &.active {
+            background-color: #3ca4f7;
+            color: white;
+          }
+
+          .text {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .box-content {
+        height: calc(100% - 60px);
+        width: 100%;
+        border-radius: 12px;
+
+        .binhluan {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

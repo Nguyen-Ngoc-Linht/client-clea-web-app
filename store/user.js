@@ -19,11 +19,16 @@ const actions = {
           JSON.stringify({
             id: data.data.user._id,
             name: data.data.user.name,
-            avatar: data.data.user.avatarUrl,
+            avatar: `${process.env.baseUrl}${data.data.user.avatarUrl}`,
             email: data.data.user.email,
             role: data.data.user.role,
           })
         );
+        const expirationTime = new Date();
+        expirationTime.setTime(expirationTime.getTime() + 60 * 60 * 1000);
+
+        localStorage.setItem("refreshToken", expirationTime.toISOString());
+
         localStorage.setItem("token", data.data.token);
         return data.data;
       }
@@ -62,6 +67,40 @@ const actions = {
       }
     } catch (e) {
       console.log(e);
+    }
+  },
+
+  async setrole({ commit, state }, { userId, role }) {
+    try {
+      console.log(userId, role);
+      const token = localStorage.getItem("token");
+      let { data } = await this.$axios.post(
+        `${USERSAPI.SETROLE}/${userId}`,
+        { role: role },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (data.status === CONSTANTS.SUCCESS) {
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  async setAvatar({ commit, state }, payload) {
+    try {
+      let { data } = await this.$axios.post(`${USERSAPI.SETAVATAR}`, payload);
+
+      if (data.status === 200) {
+        return data.user;
+      }
+    } catch (err) {
+      console.log(err);
     }
   },
 };

@@ -1,0 +1,136 @@
+.box-post-lesson {
+  .header-post {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .input-blogs {
+    width: 76%;
+    background-color: white;
+
+    .box-input {
+      align-items: center;
+      width: 100%;
+      display: flex;
+
+      .avatar-user {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .img-avt {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .input-data {
+        margin-left: 20px;
+        height: 48px;
+        flex: 1;
+
+        .input-text {
+          padding: 0 20px;
+          width: 100%;
+          height: 100%;
+          border-radius: 36px;
+          border: 2px solid #e8e8e8;
+        }
+      }
+
+      .btn-post {
+        .btn-dangbai {
+          border-radius: 12px;
+          background-color: aquamarine;
+          height: 44px;
+          padding: 0 16px;
+        }
+      }
+    }
+  }
+
+  .list-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .box-post {
+      width: 100%;
+      border: 2px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 16px 24px;
+      min-height: 180px;
+
+      .header-post {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .avatar-user {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          overflow: hidden;
+
+          .avt-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .user-name {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      .post-body {
+        width: 100%;
+
+        .post-content {
+          .post-title {
+            //font-family: "Times New Roman", Times, serif;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+          }
+
+          .post-text {
+            font-size: 16px;
+            font-weight: 300;
+          }
+        }
+
+        .post-image {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .image-item {
+            width: 100%;
+            padding-top: 62.5%;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            border-radius: 10px;
+
+            .img-post {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -76,7 +76,11 @@ export default {
       this.apiUser(data)
         .then((res) => {
           if (res.user._id != null) {
-            this.$router.push("/");
+            if (res.user.role === "ADMIN") {
+              this.$router.push("/admin");
+            } else {
+              this.$router.push("/");
+            }
           }
         })
         .catch((e) => console.log(e));

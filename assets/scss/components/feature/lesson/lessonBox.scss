@@ -1,0 +1,100 @@
+.lesson {
+  width: 100%;
+  //height: 240px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  background-color: rgba(246, 244, 244, 0.33);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+
+  .img {
+    width: 100%;
+    //height: 156px;
+    border-bottom: 1px solid #000;
+    border-radius: 0px 0px 15px 15px;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    display: block;
+    object-fit: cover;
+
+    .img-assets {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .lesson-description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .lecture-name {
+      width: 96%;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        .icon-img {
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .text {
+        flex: 1;
+        color: #000000;
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        line-height: 19.5px;
+        margin: 0;
+        max-height: 44px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    .div-decription {
+      width: 100%;
+      display: flex;
+      margin: 6px 0 0 6px;
+      justify-content: space-between;
+      padding: 0 16px 0 6px;
+
+      .access {
+        color: #000000;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 200;
+        letter-spacing: 0;
+        line-height: normal;
+        top: 196px;
+      }
+
+      .video {
+        color: #000000;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 100;
+        letter-spacing: 0;
+        line-height: normal;
+      }
+    }
+  }
+}

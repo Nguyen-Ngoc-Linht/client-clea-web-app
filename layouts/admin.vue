@@ -86,7 +86,7 @@
 
       <!-- Quay về trang chủ -->
       <div class="button-navigation">
-        <NuxtLink to="/" class="text-navi">Quay về Trang chủ</NuxtLink>
+        <NuxtLink to="/auths/login" class="text-navi">Đăng xuất</NuxtLink>
       </div>
     </div>
 
