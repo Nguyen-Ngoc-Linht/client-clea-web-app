@@ -30,7 +30,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["./assets/scss/style.scss"],
+  css: ["./assets/scss/style.scss",
+        "./assets/css/nucleo-icons.css",
+        "./assets/css/nucleo-svg.css",
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: "~/plugins/axios.js", ssr: false }],
@@ -42,7 +45,7 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios"],
+  modules: ["@nuxtjs/axios", "bootstrap-vue/nuxt"],
 
   env: {
     baseUrl: process.env.BASE_URL || "http://localhost:3030",

@@ -59,7 +59,7 @@
       <!-- ListCategory -->
       <div class="row list-category mt-2">
         <div v-for="item in listCategory" class="col-4 col-md-3 col-lg-3 mt-4">
-          <div class="category-item">
+          <div class="category-item" @click="nativeCourseType()">
             <div class="item-icon">
               <img
                 :src="

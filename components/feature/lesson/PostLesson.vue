@@ -47,7 +47,7 @@
                   {{ item.title }}
                 </div>
                 <div class="post-text mt-2">
-                  {{ item.content }}
+                  {{ item.body }}
                 </div>
                 <div class="post-time"></div>
               </div>
@@ -55,7 +55,7 @@
               <!-- Image -->
               <div class="post-image col-4">
                 <div class="image-item">
-                  <img :src="item.urlImage" alt="" class="img-post" />
+                  <img :src="item.imageLink" alt="" class="img-post" />
                 </div>
               </div>
             </div>
@@ -67,31 +67,33 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
+  props: {
+    course_id: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
-      listpost: [
-        {
-          id: "1",
-          avataruser: "https://www.shorturl.at/img/shorturl-icon.png",
-          username: "Nguyễn Ngọc Linh",
-          urlImage: "https://www.shorturl.at/img/shorturl-icon.png",
-          title:
-            "LÀ THÀNH VIÊN CỦA F8. BẠN ĐÃ THỰC SỰ SỬ DỤNG F8 HIỆU QUẢ CHƯA?",
-          content:
-            "`F8` sẽ đưa bạn đến chính xác từng vị trí xảy ra vấn đề. F8 là phím tắt mặc định trong VScode các bạn nhé (không phải cài thêm bất cứ Extensions nào)",
-        },
-      ],
+      listpost: [],
       user: {},
     };
   },
   methods: {
+    ...mapActions("post", {
+      getpostcourse: "getpostcourse",
+    }),
     showModal() {
       this.$emit("showModal");
     },
   },
-  created() {
+  async created() {
     this.user = JSON.parse(localStorage.getItem("user"));
+    this.getpostcourse(this.course_id).then((postcourse) => {
+      this.listpost = postcourse;
+    });
   },
 };
 </script>

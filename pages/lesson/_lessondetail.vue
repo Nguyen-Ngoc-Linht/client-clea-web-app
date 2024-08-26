@@ -75,7 +75,9 @@
             <div class="box-content mt-3">
               <div v-if="tabcontent === 1" class="nhiemvu">Nhiem Vu</div>
               <div v-if="tabcontent === 2" class="tailieu">Tai Lieu</div>
-              <div v-if="tabcontent === 3" class="binhluan"><Comment /></div>
+              <div v-if="tabcontent === 3" class="binhluan">
+                <Comment :lesson_id="lesson_id" />
+              </div>
             </div>
           </div>
         </div>
@@ -101,6 +103,7 @@ export default {
         },
       },
       tabcontent: 1,
+      lesson_id: "",
     };
   },
   methods: {
@@ -116,8 +119,8 @@ export default {
     },
   },
   created() {
-    const lesson_id = this.$route.params.lessondetail;
-    this.getlessonitem(lesson_id).then((response) => {
+    this.lesson_id = this.$route.params.lessondetail;
+    this.getlessonitem(this.lesson_id).then((response) => {
       // console.log(response);
       this.lesson = response;
     });

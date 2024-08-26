@@ -1,5 +1,23 @@
 @import "/assets/scss/base/base.scss";
 
+// Bootstrap Functions
+@import "soft-ui-dashboard/bootstrap/functions";
+
+// Custom Variables
+@import "soft-ui-dashboard/custom/variables";
+
+// Theme Variables
+@import "soft-ui-dashboard/variables";
+
+// Bootstrap Core
+@import "soft-ui-dashboard/bootstrap/bootstrap";
+
+// Theme Core
+@import "soft-ui-dashboard/theme";
+
+// Custom Variables
+@import "soft-ui-dashboard/custom/styles";
+
 * {
   padding: 0px;
   margin: 0px;

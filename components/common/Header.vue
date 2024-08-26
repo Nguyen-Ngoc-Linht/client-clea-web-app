@@ -8,32 +8,16 @@
     <div class="options">
       <!-- options-tab  -->
       <div class="options-tab">
-        <NuxtLink
-          to="/"
-          class="tab-item"
-          @click.native="setTab(1)"
-          :class="{ activetab: tab === 1 }"
+        <NuxtLink to="/" class="tab-item" exact-active-class="activetab"
           ><span class="text-item">Trang chủ</span></NuxtLink
         >
-        <NuxtLink
-          to="/course"
-          class="tab-item"
-          @click.native="setTab(2)"
-          :class="{ activetab: tab === 2 }"
+        <NuxtLink to="/course" class="tab-item" exact-active-class="activetab"
           ><span class="text-item">Khóa học</span></NuxtLink
         >
-        <NuxtLink
-          to="/blogs"
-          class="tab-item"
-          @click.native="setTab(3)"
-          :class="{ activetab: tab === 3 }"
+        <NuxtLink to="/blogs" class="tab-item" exact-active-class="activetab"
           ><span class="text-item">Bài viết</span></NuxtLink
         >
-        <NuxtLink
-          to="/abouts"
-          class="tab-item"
-          @click.native="setTab(4)"
-          :class="{ activetab: tab === 4 }"
+        <NuxtLink to="/abouts" class="tab-item" exact-active-class="activetab"
           ><span class="text-item">Về chúng tôi</span></NuxtLink
         >
       </div>

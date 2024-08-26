@@ -1,0 +1,50 @@
+.page-my-document {
+  width: 100%;
+
+  .header-page {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+  }
+
+  .body-page {
+    //width: 80%;
+    margin: 0 auto;
+
+    .box-item {
+      background-color: white;
+      height: 120px;
+      border-radius: 10px;
+      //   border: 1px solid #707070;
+      box-shadow: 2px 5px 3px rgba(85, 85, 85, 0.1608);
+    }
+
+    .notification {
+      .title {
+        .text {
+          font-size: 26px;
+          font-weight: 600;
+          color: #3f57ff;
+        }
+      }
+
+      .description {
+        .text-des {
+          font-size: 20px;
+          font-style: italic;
+          font-weight: 350;
+        }
+      }
+    }
+
+    .list-document {
+      width: 100%;
+      height: 500px;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 30%);
+      border-radius: 10px;
+      padding: 20px;
+    }
+  }
+}

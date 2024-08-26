@@ -26,7 +26,7 @@
                     <div
                       v-for="item in listcourse"
                       class="col-md-4"
-                      @click="clickCourse(item.id)"
+                      @click="clickCourse(item.course_id)"
                     >
                       <CourseItem
                         :id="item.id"
@@ -178,6 +178,7 @@ export default {
   created() {
     let user = JSON.parse(localStorage.getItem("user"));
     this.getcourseuser(user.id).then((respone) => {
+      // console.log(respone);
       this.listcourse = respone;
     });
   },

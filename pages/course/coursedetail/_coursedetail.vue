@@ -275,7 +275,7 @@ export default {
     },
     startLearning() {
       const course_id = this.$route.params.coursedetail;
-      this.$router.push(`/course/courselearning/${course_id}`);
+      this.$router.push(`/courselearning/khoa-hoc/${course_id}`);
     },
     formatPrice(price) {
       // Sử dụng phương thức toLocaleString() của JavaScript để chuyển đổi số

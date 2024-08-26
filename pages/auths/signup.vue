@@ -15,13 +15,25 @@
     <form class="form-login" @submit.prevent="handleSubmit">
       <div class="box-item">
         <span class="item-name mb-2"
+          >Họ tên <span style="color: red">*</span></span
+        >
+        <input
+          v-model="name"
+          type="text"
+          class="item-input"
+          placeholder="Nguyễn Văn A"
+        />
+      </div>
+
+      <div class="box-item">
+        <span class="item-name mb-2 mt-3"
           >Email <span style="color: red">*</span></span
         >
         <input
           v-model="email"
           type="text"
           class="item-input"
-          placeholder="Nhập email đăng ký"
+          placeholder="example@gmail.com"
         />
       </div>
 
@@ -34,7 +46,7 @@
           type="text"
           class="item-input"
           autocomplete="username"
-          placeholder="Nhập tên đăng nhập"
+          placeholder="userA"
         />
       </div>
 
@@ -99,13 +111,14 @@
             Click để thêm thông tin cá nhân của bạn!!
           </div>
           <div class="modal-footer">
-            <button
+            <NuxtLink
+              to="/auths/login"
               type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Để sau
-            </button>
+            </NuxtLink>
             <button
               type="button"
               class="btn btn-primary"
@@ -122,10 +135,13 @@
 
 <script>
 import validation from "@/utils/validation";
+import { mapActions } from "vuex";
+
 export default {
   layout: "authencation",
   data() {
     return {
+      name: "",
       email: "",
       username: "",
       password: "",
@@ -136,8 +152,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions("user", {
+      signup: "signup",
+    }),
     handleSubmit() {
       if (
+        this.name != "" &&
         this.email != "" &&
         this.username != "" &&
         this.password != "" &&
@@ -165,13 +185,20 @@ export default {
           return;
         }
         let data = {
-          username: this.username,
+          name: this.name,
+          userName: this.username,
           email: this.email,
           password: this.password,
           respassword: this.respassword,
         };
-        console.log(data);
-        this.myModal.show();
+        this.signup(data).then((response) => {
+          this.myModal.show();
+          this.name = "";
+          this.username = "";
+          this.email = "";
+          this.password = "";
+          this.respassword = "";
+        });
       } else {
         this.textError = "Hãy nhập đầy đủ trường thông tin";
         this.isError = true;
@@ -179,7 +206,7 @@ export default {
     },
     handleNavigation() {
       this.myModal.hide();
-      this.$router.push('/user/changeprofile')
+      this.$router.push("/user/changeprofile");
     },
   },
   mounted() {

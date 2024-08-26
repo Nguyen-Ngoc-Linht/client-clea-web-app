@@ -21,6 +21,7 @@ const actions = {
           response.push({
             id: item.course._id,
             course_name: item.details_course.name,
+            course_id: item.details_course._id,
             title: item.details_course.title,
             price: item.details_course.price,
             description: item.details_course.description,

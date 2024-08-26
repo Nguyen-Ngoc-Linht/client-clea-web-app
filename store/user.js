@@ -103,6 +103,18 @@ const actions = {
       console.log(err);
     }
   },
+
+  async signup({ commit, state }, payload) {
+    try {
+      let { data } = await this.$axios.post(`${AUTHSAPI.SIGNUP}`, payload);
+
+      if (data.status === CONSTANTS.SUCCESS) {
+        return data.data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 const state = () => ({

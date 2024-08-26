@@ -10,7 +10,7 @@ const formatLessons = (data) => {
     chaptername: item.nameChapter,
     // idVideo: item.items != null ? item.items[0].details.fileUrl : "",
     linkVideo: item.details.linkVideo,
-    image: `${process.env.baseUrl}${item.details.urlimage}`,
+    image: `${process.env.baseUrl}/upload/${item.image}`,
     content: item.content,
   }));
 
@@ -51,33 +51,11 @@ const formatListComments = (data) => {
   const formattedComment = data.map((item) => {
     const formattedItem = {
       id: item.id,
-      name: item.userResponse.firstName + " " + item.userResponse.lastName,
-      avatar: item.avatar,
+      name: item.user.name,
+      avatar: `${process.env.baseUrl}${item.user.avatarUrl}`,
       content: item.content,
-      parentId: item.parentId,
-      like: false,
-      likeCount: item.likeCount,
-      response: false,
+      like: item.number_like,
     };
-
-    if (item.childComments && item.childComments.length > 0) {
-      const formattedChildComments = item.childComments.map((childComment) => ({
-        id: childComment.id,
-        name:
-          childComment.userResponse.firstName +
-          " " +
-          childComment.userResponse.lastName,
-        avatar: childComment.avatar,
-        content: childComment.content,
-        parentId: item.parentId,
-        like: false,
-        likeCount: childComment.likeCount,
-        response: true,
-      }));
-
-      // Concatenate formattedChildComments vào mảng formattedItem
-      formattedItem.childComments = formattedChildComments;
-    }
 
     return formattedItem;
   });
