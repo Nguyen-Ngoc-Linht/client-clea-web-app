@@ -1,6 +1,7 @@
 import { CONSTANTS } from "../utils/constant";
 import { POSTAPI } from "@/api/postapi";
 import { formatPosts } from "~/utils/formData";
+import {getAccessToken} from "@/utils/cookieAuthen";
 
 const COMMITPOST = "COMMITPOST";
 const COMMITPOSTCOURSE = "COMMITPOSTCOURSE";
@@ -69,7 +70,7 @@ const actions = {
 
   async createpostcourse({ commit, state }, payload) {
     try {
-      const token = localStorage.getItem("token");
+      const token = getAccessToken();
       let { data } = await this.$axios.post(
         `${POSTAPI.CREATEPOSTCOURSE}`,
         payload,

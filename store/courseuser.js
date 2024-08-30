@@ -1,10 +1,11 @@
 import { CONSTANTS } from "../utils/constant";
 import { COURSEUSERAPI } from "@/api/courseuserapi";
+import {getAccessToken} from "@/utils/cookieAuthen";
 
 const actions = {
   async getcourseuser({ commit, state }, user_id) {
     try {
-      const token = localStorage.getItem("token");
+      const token = getAccessToken();
       let { data } = await this.$axios.get(
         `${COURSEUSERAPI.GETCOURSE}/${user_id}`,
         {

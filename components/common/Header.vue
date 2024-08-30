@@ -30,11 +30,11 @@
 
       <div v-else class="avatar-user">
         <div class="avatar-img">
-          <img class="img-avt" :src="avatar" />
+          <img class="img-avt" :src="user.avatar" />
         </div>
 
         <div class="box-name ms-2">
-          <span class="text-name">{{ username }}</span>
+          <span class="text-name">{{ user.name }}</span>
           <div class="name-settings ms-1">
             <button
               id="btnGroupDrop1"
@@ -87,13 +87,14 @@
 </template>
 
 <script>
+import {getUserInfo} from "@/utils/cookieAuthen";
+
 export default {
   data() {
     return {
       tab: 1,
       ischeckSignin: true,
-      username: "",
-      avatar: "",
+      user: {},
       isadmin: false,
     };
   },
@@ -108,12 +109,10 @@ export default {
     },
   },
   created() {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user != "" && user != null) {
+    this.user = JSON.parse(getUserInfo());
+    if (this.user != "" && this.user != null) {
       this.ischeckSignin = false;
-      this.username = user.name;
-      this.avatar = user.avatar;
-      if (user.role === "ADMIN") {
+      if (this.user.role === "ADMIN") {
         this.isadmin = true;
       }
     }

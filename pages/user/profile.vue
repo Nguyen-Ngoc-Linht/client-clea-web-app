@@ -1,84 +1,119 @@
 <template>
-  <div class="profile-page">
-    <div class="box-profile">
-      <!-- Header -->
-      <div class="header-profile">
-        <div class="avatar">
-          <img :src="avatar" class="avt-img" />
+  <div class="profile-page container-fluid">
+    <!--  Header  -->
+    <div class="container">
+      <div
+        class="page-header min-height-300 border-radius-xl mt-4"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');
+        "
+      >
+        <span class="mask bg-gradient-primary opacity-6"></span>
+      </div>
+      <div class="card card-body px-4 pt-4 mt-n8">
+        <div class="d-flex align-items-center">
+          <div class="box-avatar">
+            <img :src="user.avatar" class="avatar avatar-xxl" style="border-radius: 50%;"/>
 
-          <div class="box-edit-avatar" @click="openImageUploader">
+            <div class="box-edit-avatar" @click="openImageUploader">
+              <img
+                src="~/assets/images/pages/user/Gallery.svg"
+                alt=""
+                class="icon-edit-avatar"
+              />
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center flex-column ms-3 h-100" style="flex: 1">
+            <span class="text-3xl text-bold text-black">{{ user.name }}</span>
+            <span class="text text-danger text-bold">{{ user.description }}</span>
+          </div>
+
+          <div class="icon-edit">
             <img
-              src="~/assets/images/pages/user/Gallery.svg"
-              alt=""
-              class="icon-edit-avatar"
+              src="~/assets/images/pages/user/Pen.svg"
+              alt="Chỉnh sửa thông tin cá nhân"
+              class="img-icon"
             />
           </div>
         </div>
-
-        <div class="detail ms-3">
-          <span class="name">{{ user.name }}</span>
-          <span class="text">28-05-2002</span>
-        </div>
-
-        <div v-if="!editing" class="icon-edit" @click="enableEditing">
-          <img
-            src="~/assets/images/pages/user/Pen.svg"
-            alt=""
-            class="img-icon"
-          />
-        </div>
-
-        <div v-else class="btn-box">
-          <button class="btn btn-save btn-primary" @click="enableEditing">
-            Lưu
-          </button>
-        </div>
       </div>
+    </div>
 
-      <!-- Thông tin cá nhân -->
-      <div class="infouser">
-        <span class="title-info">Thông tin cá nhân</span>
-        <div class="box-info mt-3">
-          <div class="info-item">
-            <span class="item-title">Giới thiệu</span>
-            <textarea
-              v-model="description"
-              class="item-detail"
-              :readonly="!editing"
-            ></textarea>
+    <!--  Detail Info  -->
+    <div class="container mt-3 pb-4">
+      <div class="row">
+        <div class="col-xl-5 col-md-6 col-12">
+          <div class="card card-body">
+            <h4 class="text-black text-center mb-0">Thông tin chi tiết cá nhân</h4>
+            <hr class="horizontal dark">
+            <div class="d-flex align-items-center mt-1">
+              <div
+                class="text-center bg-white shadow icon icon-md border-radius-md d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-single-02 opacity-10 text-info text-bolder" style="font-size: 18px"></i>
+              </div>
+              <span class="mb-0 ms-2 text-md-start text-bolder text-info text-gradient">Tên tài khoản: </span>
+              <span for="" class="mb-0 ms-1 text-md-start text-bold">{{ user.username }}</span>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+              <div
+                class="text-center bg-white shadow icon icon-md border-radius-md d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-email-83 opacity-10 text-info text-bolder" style="font-size: 18px"></i>
+              </div>
+              <span class="mb-0 ms-2 text-md-start text-bolder text-info text-gradient">Email: </span>
+              <span for="" class="mb-0 ms-1 text-md-start text-bold">{{ this.email }}</span>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+              <div
+                class="text-center bg-white shadow icon icon-md border-radius-md d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-headphones opacity-10 text-info text-bolder" style="font-size: 18px"></i>
+              </div>
+              <span class="mb-0 ms-2 text-md-start text-bolder text-info text-gradient">Số điện thoại: </span>
+              <span for="" class="mb-0 ms-1 text-md-start text-bold">{{ user.phone }}</span>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+              <div
+                class="text-center bg-white shadow icon icon-md border-radius-md d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-square-pin opacity-10 text-info text-bolder" style="font-size: 18px"></i>
+              </div>
+              <span class="mb-0 ms-2 text-md-start text-bolder text-info text-gradient">Địa chỉ: </span>
+              <span for="" class="mb-0 ms-1 text-md-start text-bold">{{ user.address }}</span>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+              <div
+                class="text-center bg-white shadow icon icon-md border-radius-md d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-hat-3 opacity-10 text-info text-bolder" style="font-size: 18px"></i>
+              </div>
+              <span class="mb-0 ms-2 text-md-start text-bolder text-info text-gradient">Trình độ: </span>
+              <span for="" class="mb-0 ms-1 text-md-start text-bold">{{ user.level }}</span>
+            </div>
           </div>
 
-          <div class="info-item">
-            <span class="item-title">Học tập tại</span>
-            <textarea
-              v-model="studyat"
-              class="item-detail"
-              :readonly="!editing"
-            ></textarea>
-          </div>
+          <div class="card card-body mt-3">
 
-          <div class="info-item">
-            <span class="item-title">Địa chỉ</span>
-            <textarea
-              v-model="address"
-              class="item-detail"
-              :readonly="!editing"
-            ></textarea>
           </div>
+        </div>
 
-          <div class="info-item">
-            <span class="item-title">Thông tin liên hệ</span>
-            <textarea
-              v-model="email"
-              class="item-detail"
-              :readonly="!editing"
-            ></textarea>
-          </div>
-
-          <div class="info-item">
-            <span class="item-title">Số điện thoại</span>
-            <textarea v-model="phone" class="item-detail" :readonly="!editing">
-            </textarea>
+        <div class="col-xl-7 col-md-6 col-12">
+          <div class="card card-body">
+            <h4 class="text-black text-center">Danh sách bài đăng hệ thống</h4>
+            <hr class="horizontal dark">
+            <div v-if="isListPost"></div>
+            <div v-else class="w-100">
+              <div class="d-flex flex-column p-5 border-radius-lg shadow-blur justify-content-center align-items-center bg-gradient-info">
+                <span class="text-bold text-white text-2xl text-center w-75">Hiện bạn chưa có bài đăng nào, hãy tương tác với hệ thống nhé</span>
+                <NuxtLink to="/blogs" class="btn mt-3 bg-gradient-secondary">Đi đến đăng bài</NuxtLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,9 +142,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form class="form-input" @submit.prevent="onSubmit">
+            <form class="form-input" @submit.prevent="onSubmitSetAvatar">
               <div class="avatar">
-                <img :src="avatar" alt="" class="img-avt" />
+                <img :src="srcImage" alt="" class="img-avt"/>
               </div>
               <div class="input-item mt-3">
                 <label for="imgavatar">Chọn ảnh từ thư viện</label>
@@ -119,6 +154,7 @@
                   id="imgavatar"
                   accept=".jpg, .jpeg, .png"
                   class="file-posts mt-3"
+                  @input="changeImage"
                 />
               </div>
 
@@ -144,7 +180,9 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import {mapActions} from "vuex";
+import {getUserInfo, setUserInfo} from "@/utils/cookieAuthen";
+
 export default {
   data() {
     return {
@@ -154,8 +192,13 @@ export default {
       address: "",
       email: "",
       phone: "",
-      avatar: "",
-      editing: false,
+      post: [],
+      isListPost: false,
+      //
+      fileImage: null,
+      srcImage: "",
+      defaultChangeImage: false,
+
     };
   },
   methods: {
@@ -163,35 +206,41 @@ export default {
       getUser: "getUser",
       setAvatar: "setAvatar",
     }),
-    enableEditing() {
-      this.editing = !this.editing;
-    },
     openImageUploader() {
+      this.srcImage = this.user.avatar;
       this.myModal.show();
     },
-    async onSubmit(event) {
+
+    changeImage(event) {
+      const file = event.target.files[0];
+      this.fileImage = file;
+
+      if (file) {
+        this.defaultChangeImage = true;
+        console.log(this.fileImage.name, this.defaultChangeImage);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.srcImage = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    async onSubmitSetAvatar(event) {
       event.preventDefault();
       const formData = new FormData();
 
       formData.append("user_id", this.user.id);
-
-      if (this.$refs.imgpostavatar.files.length > 0) {
-        const file = this.$refs.imgpostavatar.files[0];
-        console.log(file);
-        formData.append("images", file);
-      }
+      formData.append("images", this.fileImage);
 
       await this.setAvatar(formData).then((response) => {
-        this.avatar = `${process.env.baseUrl}${response.avatarUrl}`;
-        this.user.avatar = this.avatar;
-        localStorage.setItem("user", JSON.stringify(this.user));
+        this.user.avatar = `${process.env.baseUrl}${response.avatarUrl}`;
+        setUserInfo(this.user);
         this.myModal.hide();
       });
     },
   },
   created() {
-    this.user = JSON.parse(localStorage.getItem("user"));
-    this.avatar = this.user.avatar;
+    this.user = JSON.parse(getUserInfo());
     this.getUser(this.user.id).then((response) => {
       this.email = response.email;
     });
@@ -202,4 +251,41 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="@/assets/scss/pages/users/profile.scss"></style>
+<style lang="scss" scoped>
+.box-avatar {
+  width: 110px;
+  height: 110px;
+  position: relative;
+
+  .box-edit-avatar {
+    position: absolute;
+    bottom: 0px;
+    right: 4px;
+    z-index: 6;
+    cursor: pointer;
+  }
+}
+
+.icon-edit {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #92a2bf;
+  }
+
+  .img-icon {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+  }
+}
+</style>

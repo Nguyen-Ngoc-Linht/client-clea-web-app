@@ -52,6 +52,7 @@ const formatListComments = (data) => {
     const formattedItem = {
       id: item.id,
       name: item.user.name,
+      userId: item.user._id,
       avatar: `${process.env.baseUrl}${item.user.avatarUrl}`,
       content: item.content,
       like: item.number_like,

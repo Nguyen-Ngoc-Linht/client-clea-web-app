@@ -3,6 +3,7 @@ import { COMMENT } from "@/api/comment";
 import { formatListComments } from "@/utils/formData";
 
 import Vue from "vue";
+import {getAccessToken} from "@/utils/cookieAuthen";
 
 const SET_COMMENT = "SET_COMMENT";
 const ADD_COMMENT = "ADD_COMMENT";
@@ -31,7 +32,7 @@ const actions = {
   async apiPostComment({ commit }, payload) {
     try {
       const lesson_id = payload.lesson_id;
-      const token = localStorage.getItem("token");
+      const token = getAccessToken();
 
       let { data } = await this.$axios.post(
         `${COMMENT.POSTCOMMENT}/${lesson_id}`,

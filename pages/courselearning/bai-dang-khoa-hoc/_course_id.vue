@@ -22,7 +22,7 @@
                 <span class="text">Bạn hãy chia sẻ ý kiến của bạn trong nhóm</span>
               </div>
 
-              <div class="input-blogs mt-2">
+              <div class="card card-body input-blogs mt-2">
                 <div class="box-input">
                   <div class="avatar-user">
                     <img :src="user.avatar" alt="" class="img-avt" />
@@ -31,13 +31,14 @@
                   <div class="input-data">
                     <input
                       type="text"
-                      class="input-text"
+                      class="input-text form-control"
+                      @click="showModal"
                       placeholder="Hãy chia sẻ kinh nghiệm hoặc vấn đề bạn đang gặp phải?"
                     />
                   </div>
 
                   <div class="btn-post ms-3">
-                    <button class="btn btn-dangbai" @click="showModal">
+                    <button class="btn bg-gradient-info mb-0" @click="showModal">
                       Đăng bài ngay
                     </button>
                   </div>
@@ -59,7 +60,7 @@
                   <div class="w-100 row mt-2">
                     <!-- Title -->
                     <div class="col-8">
-                      <div class="text-info text-gradient text-2xl text-bolder cursor-pointer">
+                      <div class="text-2xl text-black text-bolder cursor-pointer">
                         {{ item.title }}
                       </div>
                       <div class="text-secondary text-sm mt-2">
@@ -210,16 +211,6 @@
               </div>
             </form>
           </div>
-          <!-- <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div> -->
         </div>
       </div>
     </div>
@@ -231,6 +222,7 @@ import Footter from "~/components/common/Footter.vue";
 
 import {mapActions} from "vuex";
 import {formatLessonstoChapters} from "@/utils/formData";
+import {getUserInfo} from "@/utils/cookieAuthen";
 
 export default {
   layout: "empty",
@@ -269,6 +261,36 @@ export default {
     backnative() {
       this.$router.push("/course");
     },
+    async onSubmit(event) {
+      event.preventDefault();
+
+      console.log(this.titlepost, this.contentpost);
+
+      const formData = new FormData();
+
+      if (this.contentpost != "" && this.titlepost != "") {
+        formData.append("title", this.titlepost);
+        formData.append("body", this.contentpost);
+        formData.append("course_id", this.course_id);
+        formData.append("user_id", this.user.id);
+        formData.append("status", "HAHA");
+
+        if (this.$refs.imgpost.files.length > 0) {
+          const file = this.$refs.imgpost.files[0];
+          console.log(file);
+          formData.append("images", file);
+        }
+      } else {
+        alert("Bạn chưa nhập đủ thông tin");
+        return;
+      }
+
+      await this.createpostcourse(formData).then((response) => {
+        if (response) {
+          this.myModal.hide();
+        }
+      });
+    },
     setTabCourse(type) {
       this.$router.push(`/courselearning/${type}/${this.course_id}`)
     },
@@ -281,13 +303,12 @@ export default {
       //this.linkImg = `${process.env.baseUrl}${course.urlImage}`;
     });
 
-    this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = JSON.parse(getUserInfo());
     this.getpostcourse(this.course_id).then((postcourse) => {
       this.listpost = postcourse;
     });
   },
   mounted() {
-    this.user = JSON.parse(localStorage.getItem("user"));
     this.myModal = bootstrap.Modal.getOrCreateInstance(this.$refs.modal1);
   },
 };
@@ -331,50 +352,35 @@ export default {
     font-size: 24px;
     font-weight: 500;
   }
+  .box-input {
+    align-items: center;
+    width: 100%;
+    display: flex;
 
-  .input-blogs {
-    width: 76%;
-    background-color: white;
+    .avatar-user {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
 
-    .box-input {
-      align-items: center;
-      width: 100%;
-      display: flex;
-
-      .avatar-user {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        overflow: hidden;
-
-        .img-avt {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+      .img-avt {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
+    }
 
-      .input-data {
-        margin-left: 20px;
-        height: 48px;
-        flex: 1;
+    .input-data {
+      margin-left: 20px;
+      height: 48px;
+      flex: 1;
 
-        .input-text {
-          padding: 0 20px;
-          width: 100%;
-          height: 100%;
-          border-radius: 36px;
-          border: 2px solid #e8e8e8;
-        }
-      }
-
-      .btn-post {
-        .btn-dangbai {
-          border-radius: 12px;
-          background-color: aquamarine;
-          height: 44px;
-          padding: 0 16px;
-        }
+      .input-text {
+        padding: 0 20px;
+        width: 100%;
+        height: 100%;
+        border-radius: 36px;
+        border: 2px solid #e8e8e8;
       }
     }
   }

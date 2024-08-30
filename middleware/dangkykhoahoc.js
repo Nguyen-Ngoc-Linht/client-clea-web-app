@@ -1,6 +1,8 @@
+import {getAccessToken, getReFreshToken} from "@/utils/cookieAuthen";
+
 export default function (context) {
-  const token = localStorage.getItem("token");
-  const refreshToken = localStorage.getItem("refreshToken");
+  const token = getAccessToken();
+  const refreshToken = getReFreshToken();
   const refreshTokenDate = new Date(refreshToken);
 
   if (!token || token === "") {
